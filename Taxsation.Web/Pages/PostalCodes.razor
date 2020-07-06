@@ -1,0 +1,31 @@
+﻿@page "/postalcodes"
+
+<h1>Postal Codes Tax Types</h1>
+
+
+@if (_taxTypes == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Postal Code</th>
+                <th>Tax Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ttype in _taxTypes)
+            {
+                <tr>
+                    <td>@ttype.identifier</td>
+                    <td>@ttype.description</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+

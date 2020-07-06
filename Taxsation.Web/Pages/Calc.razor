@@ -1,0 +1,53 @@
+﻿@page "/calc"
+
+<h1>Calculator</h1>
+
+
+@if (_zipcodes == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+<EditForm Model="@TaxInfo" OnValidSubmit="@HandleValidSubmit">
+
+    <p>
+        <em>Select Postal Code</em>
+        <select name="zips" @bind="@TaxInfo.PostalCode" required="required">
+            <option></option>
+            @foreach (var zip in _zipcodes)
+            {
+                <option value="@zip.description">@zip.description</option>
+            }
+        </select>
+    </p>
+    <p>
+        <em>Enter Taxable Value</em>
+        <input type="text" name="txtAmount" @bind="@TaxInfo.TaxableValue" required="required"></input>
+    </p>
+    <button class="btn" type="submit">Calculate Tax</button> @*btn-blue ml-3*@
+
+    <p>
+        <em>Tax</em>
+        @if (_tax != null)
+        {
+            <label id="lblTax">@String.Format(_tax, "0.00")</label>
+        }
+    </p>
+
+</EditForm>
+
+}
+
+@*@code {
+        private int currentCount = 0;
+
+        private void CalculateTax()
+        {
+
+            string zipcode = Request. this.zips.Text;
+            //string taxableValue = this.txtAmount.Text;
+
+            //this.lblTax.Text = taxableValue;
+        }
+    }*@

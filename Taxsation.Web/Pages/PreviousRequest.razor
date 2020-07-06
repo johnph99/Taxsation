@@ -1,0 +1,35 @@
+﻿@page "/previousrequest"
+
+    <h1>Previous Request</h1>
+
+
+@if (_requests == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Request Date</th>
+                <th>Postal Code</th>
+                <th>Taxable Amount</th>
+                <th>Tax</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var req in _requests)
+            {
+            <tr>
+                <td>@req.requestDate</td>
+                <td>@req.requestZipCode</td>
+                <td>@req.requestValue</td>
+                <td>@req.calculatedTax</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+}
+
